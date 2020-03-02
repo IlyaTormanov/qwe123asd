@@ -6,6 +6,9 @@
                 <Input v-model="registration.username"/>
                 <Input v-model="registration.email"/>
                 <Input v-model="registration.password"/>
+                <Checkboxes  v-model="registration.seeker"/>
+                <Checkboxes  v-model="registration.company"/>
+
             </form>
             <Button @click="onSubmit">Зарегистрироваться</Button>
         </Classic>
@@ -16,16 +19,19 @@
     import Avatar from "@/components/UtilsComponents/images/Avatar";
     import Button from "@/components/UtilsComponents/button/Button";
     import Input from "@/components/UtilsComponents/input/input";
+    import Checkboxes from "../../UtilsComponents/Checkboxes";
     export default {
         name: "Registration",
-        components: {Input, Button, Avatar, Classic},
+        components: {Checkboxes, Input, Button, Avatar, Classic},
         data(){
             return{
 
                 registration:{
                     username:"",
                     email:"",
-                    password:""
+                    password:"",
+                    company:0,
+                    seeker:1
                 }
             }
         },

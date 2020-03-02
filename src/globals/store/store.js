@@ -16,11 +16,18 @@ export const store=new Vuex.Store({
                 username:"",
                 password:"",
                 email:"",
-                userType:1||2
-            }
+                userType:0
+            },
+            company_all:[],
+            technologies:[]
     },
     getters:{
-
+        GET_TECHNOLOGIES:(state)=>{
+          return state.technologies
+        },
+        GET_ALL_COMPANY:(state)=>{
+          return state.company_all
+        },
         GET_LOGIN_USER:(state)=>{
             return state.loginUser
         },
@@ -29,6 +36,12 @@ export const store=new Vuex.Store({
         }
     },
     mutations:{
+        SET_TECHNOLOGIES:(state,payload)=>{
+          state.technologies.push(payload)
+        },
+        SET_ALL_COMPANY:(state,payload)=>{
+          state.company_all.push(payload)
+        },
 
         SET_SIGN_UP:(state,payload)=>{
             state.signUp=payload
@@ -42,22 +55,41 @@ export const store=new Vuex.Store({
         }
     },
     actions:{
+        SET_TECHNOLOGIES:(context,payload)=>{
+          return Vue.axios.get(routes.TECHNOLOGIES)
+              .then(res=>{
+                  context.commit('SET_TECHNOLOGIES',res.data)
+              })
+              .catch(e=>{
+                  context.commit('SET_MODAL',{status:400,text:'В данный момент список технологий недоступен'})
+              })
+        },
+        SET_ALL_COMPANY:(context,payload)=>{
+          return Vue.axios.get(routes.ALL_COMPANY)
+              .then(res=>{
+                    context.commit('SET_ALL_COMPANY',res.data)
+              })
+              .catch(e=>{
+                  context.commit('SET_MODAL',{status:400,text:'Извините,ведутся технические работы'})
+              })
+        },
         SET_LOGIN_USER:(context,payload)=>{
           return  Vue.axios.post(`${routes.SIGN_IN}?${stringify(payload)}`)
               .then(res=>{
 
                   if(res.status===200){
                       context.commit('SET_LOGIN_USER',res.data)
-
+                            sessionStorage.setItem('user',res.data)
                   }
 
               }).catch(e=>{
+                  console.log(JSON.stringify(e));
                   context.commit('SET_MODAL',{status:400,text:'Неверный логин или пароль'})
                   }
               )
         },
         SET_SIGN_UP:(context,payload)=>{
-            return axios.post(`${routes.SIGN_UP}?${{payload}}`)
+            return axios.post(`${routes.SIGN_UP}?${stringify(payload.userType)}`,payload)
                 .then(res=>{
                     if(res.status===200){
                         context.commit('SET_SIGN_UP',res.data)

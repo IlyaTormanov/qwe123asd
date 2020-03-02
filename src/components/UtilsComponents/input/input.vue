@@ -5,9 +5,9 @@
             <div class="icon" v-if="order"  :style="{order:order}">
                 <MenuIcon fillColor="white" />
             </div>
-            <input class="input" @input="onChange"
+            <input :class="large?'large':'input'" @input="onChange"
                    :placeholder="placeholder"
-                   :style="{borderRadius:isRadius}"
+                   :style="{borderRadius:radius,border:border,background:background}"
                    :name="name"
             />
         </div>
@@ -25,16 +25,16 @@
         },
         props:{
             name:String,
-            order:1||2||undefined,
-            placeholder:String||undefined,
-            placeholderTop:String||undefined,
+            order:Number,
+            placeholder:String,
+            placeholderTop:String,
+            border:String,
+            background:String,
+            radius:String,
+            large:Boolean
 
         },
-        data(){
-           return{
-              isRadius:''
-           }
-        },
+
         methods:{
             onChange:function(e){
                     this.$emit('input',e.target.value)
@@ -86,9 +86,22 @@
                 background: $orange;
             }
             .input{
+                border:none !important;
                 padding:5px;
-                border: 2px solid $orange;
+
+                box-sizing: border-box;
             }
+            .large{
+                border:none !important;
+                padding:8px 20px;
+                box-sizing: border-box;
+                width:300px;
+                height:40px;
+                color:$gray;
+                font-weight: bolder;
+                font-size:1.3em;
+            }
+
 
         }
     }

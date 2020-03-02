@@ -1,8 +1,16 @@
 <template>
     <div id="app">
-        <PopUp :modal="this.$store.getters.GET_MODAL" v-if="checkModal(this.$store.getters.GET_MODAL)"/>
-<!--            <Login/>-->
-        <Registration/>
+<!--        <PopUp :modal="this.$store.getters.GET_MODAL" v-if="checkModal(this.$store.getters.GET_MODAL)"/>-->
+<!--&lt;!&ndash;            <Login/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <Registration/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Select :data="this.$store.getters.GET_TECHNOLOGIES"/>&ndash;&gt;-->
+<!--       <div class="test">-->
+<!--           <ContentHeader/>-->
+<!--           <Companies/>-->
+<!--       </div>-->
+        rpetjhrjhoithjioj
+        <router-view/>
     </div>
 </template>
 
@@ -12,16 +20,31 @@
     import Login from "@/components/Authorization /login/Login";
     import PopUp from "@/components/UtilsComponents/modal/PopUp";
     import Registration from "@/components/Authorization /registration/Registration";
-
-
+    import Companies from "./components/pages/content/company/Companies";
+    import Select from "./components/UtilsComponents/select/Select";
+    import ContentHeader from "./components/pages/content/utilsLayouts/contentHeader/ContentHeader";
     export default {
         name: 'App',
         components: {
+            Companies,
+            ContentHeader,
+            Select,
+
+
+
             Registration,
             PopUp,
             Login,
             HelloWorld
         },
+        data(){
+          return{
+              tech:[]
+          }
+        },
+        // mounted() {
+        //     this.$store.dispatch('SET_TECHNOLOGIES')
+        // },
 
         methods: {
             checkModal: function (arg) {
@@ -47,9 +70,20 @@
         color: #2c3e50;
         font-size: 14px;
         position: relative;
-
+            .test{
+                width:100vw;
+                height:100%;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+            }
         input, textarea {
             box-sizing: border-box;
+            &:hover{
+                border-color: inherit;
+            }
         }
 
         button {
