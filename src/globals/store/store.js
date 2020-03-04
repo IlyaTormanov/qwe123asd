@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export const store=new Vuex.Store({
     state:{
+            filterSidebar:false,
             modal:{},
             loginUser:{
                 username:"",
@@ -22,6 +23,9 @@ export const store=new Vuex.Store({
             technologies:[]
     },
     getters:{
+        GET_FILTER_SIDEBAR:(state)=>{
+          return state.filterSidebar
+        },
         GET_TECHNOLOGIES:(state)=>{
           return state.technologies
         },
@@ -36,11 +40,14 @@ export const store=new Vuex.Store({
         }
     },
     mutations:{
+        SET_FILTER_SIDEBAR:(state,payload)=>{
+          state.filterSidebar=payload
+        },
         SET_TECHNOLOGIES:(state,payload)=>{
-          state.technologies.push(payload)
+          state.technologies=payload
         },
         SET_ALL_COMPANY:(state,payload)=>{
-          state.company_all.push(payload)
+          state.company_all=payload
         },
 
         SET_SIGN_UP:(state,payload)=>{

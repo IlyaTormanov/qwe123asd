@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <Input :placeholder="placeholder" v-model="currentValue"/>
-            <Dropdown :current="currentValue" :list="data"/>
+        <Input :placeholder="placeholder" v-model="currentValue" :large="large"  :name="name"/>
+            <Dropdown :current="currentValue" :list="data" :search-dropdown="true"/>
 
 <!--            <div class="select_list"  v-for="item in data" >-->
 <!--        <div v-for="i in item" class="item" v-if="i.name.substring(0,2)===currentValue" >-->
@@ -22,12 +22,14 @@
         data(){
            return{
             currentValue:""
-
            }
         },
         props:{
             placeholder:String,
-            data:Array
+            data:Array,
+            large:Boolean,
+            name:String
+
         },
 
 

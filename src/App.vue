@@ -1,15 +1,14 @@
 <template>
     <div id="app">
-<!--        <PopUp :modal="this.$store.getters.GET_MODAL" v-if="checkModal(this.$store.getters.GET_MODAL)"/>-->
+        <PopUp :modal="setModal" v-if="checkModal(setModal)"/>
 <!--&lt;!&ndash;            <Login/>&ndash;&gt;-->
 <!--&lt;!&ndash;        <Registration/>&ndash;&gt;-->
 
 <!--&lt;!&ndash;            <Select :data="this.$store.getters.GET_TECHNOLOGIES"/>&ndash;&gt;-->
 <!--       <div class="test">-->
-<!--           <ContentHeader/>-->
 <!--           <Companies/>-->
 <!--       </div>-->
-        rpetjhrjhoithjioj
+
         <router-view/>
     </div>
 </template>
@@ -23,9 +22,11 @@
     import Companies from "./components/pages/content/company/Companies";
     import Select from "./components/UtilsComponents/select/Select";
     import ContentHeader from "./components/pages/content/utilsLayouts/contentHeader/ContentHeader";
+    import Header from "./components/pages/Header";
     export default {
         name: 'App',
         components: {
+            Header,
             Companies,
             ContentHeader,
             Select,
@@ -45,7 +46,11 @@
         // mounted() {
         //     this.$store.dispatch('SET_TECHNOLOGIES')
         // },
-
+        computed:{
+          setModal:function(){
+              return this.$store.getters.GET_MODAL
+          }
+        },
         methods: {
             checkModal: function (arg) {
                 return checkIsEmpty(arg)
@@ -85,7 +90,14 @@
                 border-color: inherit;
             }
         }
-
+        .selectInput{
+            border:none;
+            border-bottom:1px solid #e7e8ec !important ;
+            color:#e7e8ec
+        }
+        .fullWidthInput{
+            width:100%;
+        }
         button {
             color: white;
             min-width: 60px;

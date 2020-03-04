@@ -1,8 +1,8 @@
 <template>
     <div >
     <div class="select_list"  v-for="item in list" :style="styles">
-        <div v-for="i in item" class="item" v-if="searchDropdown?item.name.substring(0,2)===current:item" >
-            {{i.name}}
+        <div  class="item" v-if="searchDropdown?item.name.substring(0,2)===current:item" >
+            {{item.name}}
         </div>
     </div>
     </div>
