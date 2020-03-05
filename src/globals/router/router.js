@@ -5,14 +5,15 @@ import Login from "../../components/Authorization /login/Login";
 import Sign from "../../components/pages/content/utilsLayouts/rootes/Sign";
 import Registration from "../../components/Authorization /registration/Registration";
 import Content from "../../components/pages/content/utilsLayouts/rootes/Content";
+import Root from "../../components/pages/content/utilsLayouts/rootes/Root";
 
 export const router=new VueRouter({
         mode:"history",
         routes:[
             {
                 path:'/',
-                name:'Sign',
-                component:Sign,
+                name:'Root',
+                component:Root,
                 children:[
                     {
                         path:'login',

@@ -1,13 +1,13 @@
 <template>
     <div id="company_container">
-        <ContentHeader :model="this.allCompany" />
+        <ContentHeader  />
 
         <div>
                         <div class="filter_dropdown" v-if="setSidebar">
 
                             <div class="filter_dropdown_item">
                                 <label>Технологии</label>
-                              <MultiSelect/>
+                              <MultiSelect :model="technologies"/>
 
                             </div>
                         </div>
@@ -32,11 +32,14 @@
             },
             setSidebar:function(){
                 return this.$store.getters.GET_FILTER_SIDEBAR
+            },
+            technologies:function(){
+                return this.$store.getters.GET_TECHNOLOGIES
             }
         },
         mounted() {
             this.$store.dispatch('SET_ALL_COMPANY')
-
+            this.$store.dispatch('SET_TECHNOLOGIES')
         }
     }
 </script>
@@ -45,16 +48,14 @@
     #company_container {
         margin-top:120px;
         width:1000px;
-        display: grid;
-        grid-row-gap: 15px;
         background:white;
         .filter_dropdown{
-            position:absolute;
+
             -webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             -moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             height:600px;
-            width:400px;
+            width:500px;
             padding:15px;
             box-sizing: border-box;
             background:white;

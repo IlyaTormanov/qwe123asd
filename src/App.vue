@@ -86,6 +86,7 @@
             }
         input, textarea {
             box-sizing: border-box;
+            outline:none;
             &:hover{
                 border-color: inherit;
             }

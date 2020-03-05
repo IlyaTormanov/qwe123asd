@@ -2,12 +2,12 @@
     <div id="content_header">
 <!--        <Input placeholder="Поиск"/>-->
         <div class="filter_pop_up">
-            <div class="filters" @click="()=>{this.setSidebar=true}">
-                <span class="filters_title">
+            <div class="filters" >
+                <span class="filters_title" @click="updateSidebar">
                     Фильтры
                 </span>
-                <ChevronUpIcon :size="28" v-if="!setSidebar"/>
-                <ChevronDownIcon :size="28" v-if="setSidebar"/>
+<!--                <ChevronUpIcon :size="28" v-if="!dropdown"/>-->
+<!--                <ChevronDownIcon :size="28" v-if="setSidebar"/>-->
             </div>
 
         </div>
@@ -35,25 +35,23 @@
         data(){
             return{
                 showSearch:false,
-
                 currentValue:"",
 
             }
         },
         computed:{
-          technologies:function(){
-              return this.$store.getters.GET_TECHNOLOGIES
-          },
-            setSidebar:{
-                    get:function(){
-                        return this.$store.getters.GET_FILTER_SIDEBAR
-                    },
-                set:function(val){
-                        this.$store.getters.GET_FILTER_SIDEBAR=val
-                }
-            }
+
+          sidebar:function(){
+              return this.$store.getters.GET_FILTER_SIDEBAR
+          }
+
         },
-        mounted() {
+        methods:{
+          updateSidebar:function(){
+              this.$store.commit('SET_FILTER_SIDEBAR',!this.sidebar)
+          }
+        },
+        created() {
             this.$store.dispatch('SET_TECHNOLOGIES')
 
         }

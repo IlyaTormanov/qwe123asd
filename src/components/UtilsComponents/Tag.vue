@@ -1,13 +1,14 @@
 <template>
     <div class="tag">
-                <div>Tag</div>
+                <div>{{tag.name}}</div>
                 <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Tag"
+        name: "Tag",
+        props:{tag:Object}
     }
 </script>
 

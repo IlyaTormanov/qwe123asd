@@ -2,7 +2,7 @@
 <div id="content">
     <Header/>
 
-    <router-view/>
+    <router-view exact="companies"/>
 </div>
 </template>
 
