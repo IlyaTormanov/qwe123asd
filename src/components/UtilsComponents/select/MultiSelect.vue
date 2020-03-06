@@ -64,8 +64,6 @@
 
             getModel() {
                 return this.model.filter(item => item.name.toLowerCase().includes(this.typingValue.toLowerCase()));
-                //return this.model.filter(item => item.name.substring(0,2) === this.typingValue)
-
             },
 
 
