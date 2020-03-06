@@ -10,6 +10,16 @@
                               <MultiSelect :model="technologies"/>
 
                             </div>
+                            <div class="filter_dropdown_item">
+                                <label>Город</label>
+                                <MultiSelect :model="technologies"/>
+
+                            </div>
+                            <div class="filter_dropdown_item">
+                                <label>Страна</label>
+                                <MultiSelect :model="technologies"/>
+
+                            </div>
                         </div>
             <Company :data="this.allCompany" />
         </div>
@@ -50,11 +60,13 @@
         width:1000px;
         background:white;
         .filter_dropdown{
-
+            display:grid;
+            grid-row-gap: 20px;
             -webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             -moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-            height:600px;
+            /*height:600px;*/
+
             width:500px;
             padding:15px;
             box-sizing: border-box;

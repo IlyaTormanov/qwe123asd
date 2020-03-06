@@ -84,6 +84,9 @@
                 align-items: center;
                 align-content: center;
             }
+        .material-design-icon{
+            cursor:pointer;
+        }
         input, textarea {
             box-sizing: border-box;
             outline:none;

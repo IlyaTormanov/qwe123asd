@@ -1,5 +1,6 @@
 <template>
             <input :class="large?'large':'input'" @input="onChange"
+                   @focus="onFocus"
                    :placeholder="placeholder"
                    :name="name"
             />
@@ -25,6 +26,9 @@
         methods:{
             onChange:function(e){
                     this.$emit('input',e.target.value)
+            },
+            onFocus:function(e){
+                this.$emit('focus')
             }
         },
 

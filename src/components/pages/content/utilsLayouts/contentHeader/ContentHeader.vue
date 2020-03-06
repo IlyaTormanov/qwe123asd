@@ -6,10 +6,9 @@
                 <span class="filters_title" @click="updateSidebar">
                     Фильтры
                 </span>
-<!--                <ChevronUpIcon :size="28" v-if="!dropdown"/>-->
-<!--                <ChevronDownIcon :size="28" v-if="setSidebar"/>-->
+                <ChevronUpIcon :size="28" v-if="!this.sidebar"/>
+                <ChevronDownIcon :size="28" v-if="this.sidebar"/>
             </div>
-
         </div>
 <!--        <Select v-if="showSearch" background="#e7e8ec" radius="5px" :large="true" placeholder="Поиск..." :data="technologies"/>-->
         <Input v-if="showSearch"  :style="{background:'#e7e8ec'}" :large="true" placeholder="Поиск..."  />

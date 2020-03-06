@@ -2,20 +2,18 @@
     <div class="item_relative_wrapper">
         <Input placeholder="Технологии"
                :large="false"
-               class="selectInput fullWidthInput" v-model="typingValue"/>
+               class="selectInput fullWidthInput" v-model="typingValue"  @focus="showList=!showList"/>
         <div  class="tagList">
-<!--            //TODO:'add grid'-->
            <Tag
              :tag="tag"
              v-for="tag in tagList"
              v-if="tagList.length">
-            <CloseCircle :size="18"/>
+            <CloseCircle :size="18" class="icon"  @click="removeFromTagList(tag)" title="Удалить"/>
             </Tag>
         </div>
-
-        <div class="select_list" v-if="getModel.length">
+        <div class="select_list" v-if="showList">
             <div class="item"  v-for="item in getModel" @click="pushToTagList(item)">
-                <div>{{item.name}}</div>   <Check/>
+                <div>{{item.name}}</div>   <Check :fill-color="tagList.find(i=>i.id===item.id)?'#2196F3':'#787878'" title="Добавить"/>
             </div>
         </div>
 
@@ -28,6 +26,11 @@
     import Tag from "../Tag";
     import Input from '../input/input'
     import Check from 'vue-material-design-icons/Check.vue';
+    import {uniq} from 'fp-ts/es6/Array';
+    import {fromEquals} from "fp-ts/es6/Eq";
+
+    const tagEq = fromEquals((a, b) => a.name === b.name);
+
     export default {
         name: "MultiSelect",
         components: {Tag, Input, CloseCircle,Check},
@@ -35,23 +38,36 @@
         data() {
             return {
                 typingValue: "",
-                //TODO:'set limit or scroll'
-                tagList:[]
+                tagList:[],
+                showList:false
             }
+        },
+        watch:{
+          showList:function(val){
+              this.showList=val
+          }
         },
         methods:{
           pushToTagList:function(tag){
-              //TODO:'filter'
-              this.tagList.filter(item=>item!==tag)
-              return this.tagList=[...this.tagList,tag]
-          }
+
+              this.tagList= uniq(tagEq)([...this.tagList,tag])
+          },
+            removeFromTagList:function(i){
+              console.log(i)
+
+                this.tagList = this.tagList.filter(item=>item.id!==i.id)
+                console.log(this.tagList)
+            }
+
         },
         computed: {
-            getModel() {
-                //TODO:'add includes'
-                return this.model.filter(item => item.name.substring(0,2) === this.typingValue)
 
-            }
+            getModel() {
+                return this.model.filter(item => item.name.toLowerCase().includes(this.typingValue.toLowerCase()));
+                //return this.model.filter(item => item.name.substring(0,2) === this.typingValue)
+
+            },
+
 
 
         }
@@ -69,15 +85,18 @@
                 position:absolute;
                 top:5px;
                 left:30%;
-                display:flex;
+                /*display:grid;*/
+                /*grid-template-columns: auto auto auto;*/
+                /*grid-column-gap: 5px;*/
                 flex-direction: row;
                 justify-content: flex-start;
             }
         .select_list {
             width:100%;
+            overflow: auto;
             z-index: 10000;
+            position:absolute;
             background: white;
-            position: absolute;
             border:1px solid $border;
             padding: 5px;
             box-sizing: border-box;

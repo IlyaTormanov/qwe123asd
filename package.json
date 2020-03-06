@@ -5,12 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "watch": "npm run development -- --watch",
+    "watch": "vue-cli-service serve --watch",
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "fp-ts": "^2.5.3",
     "node-sass": "^4.13.1",
     "qs": "^6.9.1",
     "sass-loader": "^8.0.2",
