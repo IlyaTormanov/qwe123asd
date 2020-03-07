@@ -1,14 +1,6 @@
 <template>
     <div id="app">
         <PopUp :modal="setModal" v-if="checkModal(setModal)"/>
-<!--&lt;!&ndash;            <Login/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <Registration/>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <Select :data="this.$store.getters.GET_TECHNOLOGIES"/>&ndash;&gt;-->
-<!--       <div class="test">-->
-<!--           <Companies/>-->
-<!--       </div>-->
-
         <router-view/>
     </div>
 </template>
@@ -111,6 +103,7 @@
 
         a {
             cursor: pointer;
+            text-decoration: none;
         }
     }
 </style>

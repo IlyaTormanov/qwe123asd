@@ -10,7 +10,7 @@
 
         </form>
         <Button @click="setData">
-            Войти
+            Войти,payload
         </Button>
     </Classic>
 </template>
@@ -34,8 +34,8 @@
         },
         methods: {
             setData: function () {
-                this.$store.dispatch('SET_LOGIN_USER', this.loginData)
-                console.log(this.loginData)
+                this.$store.dispatch('SET_LOGIN_USER_REQUEST', this.loginData)
+                    .then(()=>{this.$router.push('page/companies')})
             }
         }
     }

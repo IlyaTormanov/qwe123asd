@@ -7,22 +7,27 @@ Vue.use(Vuex)
 
 export const store=new Vuex.Store({
     state:{
-            filterSidebar:false,
+            filterSidebar:true,
             modal:{},
             loginUser:{
                 username:"",
                 password:""
             },
+
             signUp:{
                 username:"",
                 password:"",
                 email:"",
                 userType:0
             },
+            company:{},
             company_all:[],
             technologies:[]
     },
     getters:{
+        GET_COMPANY:(state)=>{
+            return state.company
+        },
         GET_FILTER_SIDEBAR:(state)=>{
           return state.filterSidebar
         },
@@ -40,21 +45,37 @@ export const store=new Vuex.Store({
         }
     },
     mutations:{
+        SET_COMPANY_REQUEST:(state,payload)=>{
+          state.company=payload
+        },
+        SET_COMPANY_SUCCESS:(state,payload)=>{
+            state.company=payload
+        },
         SET_FILTER_SIDEBAR:(state,payload)=>{
           state.filterSidebar=payload
         },
-        SET_TECHNOLOGIES:(state,payload)=>{
+        SET_TECHNOLOGIES_REQUEST:(state,payload)=>{
           state.technologies=payload
         },
-        SET_ALL_COMPANY:(state,payload)=>{
+        SET_TECHNOLOGIES_SUCCESS:(state,payload)=>{
+            state.technologies=payload
+        },
+        SET_ALL_COMPANY_REQUEST:(state,payload)=>{
           state.company_all=payload
         },
-
-        SET_SIGN_UP:(state,payload)=>{
+        SET_ALL_COMPANY_SUCCESS:(state,payload)=>{
+            state.company_all=payload
+        },
+        SET_SIGN_UP_REQUEST:(state,payload)=>{
             state.signUp=payload
         },
-
-        SET_LOGIN_USER:(state,payload)=>{
+        SET_SIGN_UP_SUCCESS:(state,payload)=>{
+            state.signUp=payload
+        },
+        SET_LOGIN_USER_REQUEST:(state,payload)=>{
+            state.loginUser=payload
+        },
+        SET_LOGIN_USER_SUCCESS:(state,payload)=>{
             state.loginUser=payload
         },
         SET_MODAL:(state,payload)=>{
@@ -62,31 +83,37 @@ export const store=new Vuex.Store({
         }
     },
     actions:{
-        SET_TECHNOLOGIES:(context,payload)=>{
+        SET_COMPANY_REQUEST:(context,payload)=>{
+          return Vue.axios.post(`${routes.COMPANY}?${stringify(payload)}`,{'authorization':`Bearer ${this.state.loginUser.token}`})
+              .then(res=>{
+                  context.commit('SET_COMPANY_SUCCESS',res.data)
+              })
+        },
+        SET_TECHNOLOGIES_REQUEST:(context,payload)=>{
           return Vue.axios.get(routes.TECHNOLOGIES)
               .then(res=>{
-                  context.commit('SET_TECHNOLOGIES',res.data)
+                  context.commit('SET_TECHNOLOGIES_SUCCESS',res.data)
               })
               .catch(e=>{
                   context.commit('SET_MODAL',{status:400,text:'В данный момент список технологий недоступен'})
               })
         },
-        SET_ALL_COMPANY:(context,payload)=>{
+        SET_ALL_COMPANY_REQUEST:(context)=>{
           return Vue.axios.get(routes.ALL_COMPANY)
               .then(res=>{
-                    context.commit('SET_ALL_COMPANY',res.data)
+                    context.commit('SET_ALL_COMPANY_SUCCESS',res.data)
               })
               .catch(e=>{
                   context.commit('SET_MODAL',{status:400,text:'Извините,ведутся технические работы'})
               })
         },
-        SET_LOGIN_USER:(context,payload)=>{
+        SET_LOGIN_USER_REQUEST:(context,payload)=>{
           return  Vue.axios.post(`${routes.SIGN_IN}?${stringify(payload)}`)
               .then(res=>{
 
                   if(res.status===200){
-                      context.commit('SET_LOGIN_USER',res.data)
-                            sessionStorage.setItem('user',res.data)
+                      context.commit('SET_LOGIN_USER_SUCCESS',res.data)
+                            sessionStorage.setItem('user',JSON.stringify(res.data))
                   }
 
               }).catch(e=>{
@@ -95,11 +122,11 @@ export const store=new Vuex.Store({
                   }
               )
         },
-        SET_SIGN_UP:(context,payload)=>{
+        SET_SIGN_UP_REQUEST:(context,payload)=>{
             return axios.post(`${routes.SIGN_UP}?${stringify(payload.userType)}`,payload)
                 .then(res=>{
                     if(res.status===200){
-                        context.commit('SET_SIGN_UP',res.data)
+                        context.commit('SET_SIGN_UP_SUCCESS',res.data)
                     }
 
                 }).catch(e=>{

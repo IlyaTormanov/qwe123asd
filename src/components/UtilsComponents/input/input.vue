@@ -50,10 +50,14 @@
         border-radius:4px;
         box-sizing: border-box;
         width:300px;
-        height:40px;
+        height:45px;
         color:$gray;
-        font-weight: bolder;
-        font-size:1.3em;
+
+        &::placeholder{
+            font-size:1.1em;
+            letter-spacing:1.6px;
+            font-weight: normal;
+        }
     }
     .input_container{
         width: fit-content;

@@ -11,7 +11,10 @@
             </div>
         </div>
 <!--        <Select v-if="showSearch" background="#e7e8ec" radius="5px" :large="true" placeholder="Поиск..." :data="technologies"/>-->
-        <Input v-if="showSearch"  :style="{background:'#e7e8ec'}" :large="true" placeholder="Поиск..."  />
+        <Input v-if="showSearch"
+               :style="{background:'#e7e8ec'}"
+               :large="true" placeholder="Поиск..."
+               v-model="currentValue" />
         <MagnifyIcon fill-color="#787878" :size="28" @click="showSearch=!showSearch"/>
     </div>
 </template>
@@ -29,29 +32,40 @@
 
     export default {
         name: "ContentHeader",
-        components: {MultiSelect, Select, Dropdown, Input, ChevronUpIcon,MagnifyIcon,ChevronDownIcon},
-
-        data(){
-            return{
-                showSearch:false,
-                currentValue:"",
+        components: {MultiSelect, Select, Dropdown, Input, ChevronUpIcon, MagnifyIcon, ChevronDownIcon},
+        data() {
+            return {
+                showSearch: false,
+                currentValue: "",
 
             }
         },
-        computed:{
+        watch: {
+            currentValue: function (val) {
+                // TODO:'add filtres'
+                const allCompany = this.$store.getters.GET_ALL_COMPANY
+                allCompany.filter(i => i.name.includes(val))
+                console.log('all',allCompany)
+                // this.$store.dispatch('SET_COMPANY_REQUEST',)
+            }
 
-          sidebar:function(){
-              return this.$store.getters.GET_FILTER_SIDEBAR
-          }
 
         },
-        methods:{
-          updateSidebar:function(){
-              this.$store.commit('SET_FILTER_SIDEBAR',!this.sidebar)
-          }
+        methods: {
+            updateSidebar: function () {
+                this.$store.commit('SET_FILTER_SIDEBAR', !this.sidebar)
+            }
+        },
+        computed: {
+            sidebar: function () {
+                return this.$store.getters.GET_FILTER_SIDEBAR
+
+            },
+
+
         },
         created() {
-            this.$store.dispatch('SET_TECHNOLOGIES')
+            this.$store.dispatch('SET_TECHNOLOGIES_REQUEST')
 
         }
     }
@@ -67,7 +81,7 @@
         flex-direction: row;
         justify-content: space-between;
         padding:15px 40px;
-        height:70px;
+        height:90px;
         border-bottom: 2px solid $blue;
         align-items: center;
         box-sizing: border-box;
@@ -77,15 +91,19 @@
             width: fit-content;
 
             .filters {
-                font-size: 1.6em;
-                font-weight: bolder;
                 color: $gray;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
                 cursor:pointer;
-
+                border: 1px solid #cccccc;
+                padding:8px 28px;
+                font-size:1em;
+                letter-spacing: 1px;
+                font-weight: bolder;
                 .filters_title {
+                    text-align: center;
+                    align-self: center;
                     cursor:pointer;
                 }
 

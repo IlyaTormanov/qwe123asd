@@ -25,7 +25,6 @@
         components: {Checkboxes, Input, Button, Avatar, Classic},
         data(){
             return{
-
                 registration:{
                     username:"",
                     email:"",
@@ -37,7 +36,7 @@
         },
         methods:{
             onSubmit:function(){
-                this.$store.dispatch('SET_SIGN_UP',this.registration)
+                this.$store.dispatch('SET_SIGN_UP_REQUEST',this.registration)
 
                 console.log(this.registration)
             }
