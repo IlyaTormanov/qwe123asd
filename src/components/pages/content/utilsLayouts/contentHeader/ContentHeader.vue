@@ -68,9 +68,10 @@
         justify-content: space-between;
         padding:15px 40px;
         height:70px;
+        border-bottom: 2px solid $blue;
         align-items: center;
         box-sizing: border-box;
-        border-bottom: 2px solid $border;
+
         .filter_pop_up {
             position:relative;
             width: fit-content;

@@ -21,7 +21,9 @@
 
                             </div>
                         </div>
-            <Company :data="this.allCompany" />
+           <div class="company_list" v-for="company in this.allCompany">
+               <Company :data="company" />
+           </div>
         </div>
 
     </div>
@@ -57,10 +59,13 @@
 <style scoped lang="scss">
     #company_container {
         margin-top:120px;
-        width:1000px;
+        width:100%;
         background:white;
+        position:relative;
+
         .filter_dropdown{
             display:grid;
+            position:absolute;
             grid-row-gap: 20px;
             -webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
             -moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
@@ -80,6 +85,15 @@
                 align-items: flex-start;
 
             }
+        }
+        .company_list{
+            box-sizing: border-box;
+            background:#edeef0;
+            padding:7px;
+            width:100%;
+            display:flex;
+            justify-content: center;
+
         }
     }
 </style>

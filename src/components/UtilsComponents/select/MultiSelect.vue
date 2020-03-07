@@ -49,14 +49,11 @@
         },
         methods:{
           pushToTagList:function(tag){
-
               this.tagList= uniq(tagEq)([...this.tagList,tag])
           },
             removeFromTagList:function(i){
-              console.log(i)
-
                 this.tagList = this.tagList.filter(item=>item.id!==i.id)
-                console.log(this.tagList)
+
             }
 
         },
@@ -83,9 +80,9 @@
                 position:absolute;
                 top:5px;
                 left:30%;
-                /*display:grid;*/
-                /*grid-template-columns: auto auto auto;*/
-                /*grid-column-gap: 5px;*/
+                display:grid;
+                grid-template-columns: auto auto auto;
+                grid-column-gap: 5px;
                 flex-direction: row;
                 justify-content: flex-start;
             }
