@@ -1,6 +1,5 @@
 <template>
     <div id="content_header">
-<!--        <Input placeholder="Поиск"/>-->
         <div class="filter_pop_up">
             <div class="filters" >
                 <span class="filters_title" @click="updateSidebar">
@@ -10,7 +9,6 @@
                 <ChevronDownIcon :size="28" v-if="this.sidebar"/>
             </div>
         </div>
-<!--        <Select v-if="showSearch" background="#e7e8ec" radius="5px" :large="true" placeholder="Поиск..." :data="technologies"/>-->
         <Input v-if="showSearch"
                :style="{background:'#e7e8ec'}"
                :large="true" placeholder="Поиск..."
@@ -42,11 +40,9 @@
         },
         watch: {
             currentValue: function (val) {
-                // TODO:'add filtres'
-                const allCompany = this.$store.getters.GET_ALL_COMPANY
-                allCompany.filter(i => i.name.includes(val))
-                console.log('all',allCompany)
-                // this.$store.dispatch('SET_COMPANY_REQUEST',)
+                console.log('val', typeof val)
+                    this.$store.commit('SET_COMPANY_FILTER',val)
+
             }
 
 

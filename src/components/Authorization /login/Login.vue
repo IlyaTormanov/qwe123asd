@@ -14,7 +14,6 @@
         </Button>
     </Classic>
 </template>
-
 <script>
     import Button from "@/components/UtilsComponents/button/Button";
     import Input from "../../UtilsComponents/input/input";
@@ -26,7 +25,7 @@
         components: {Classic, Avatar, Input, Button},
         data() {
             return {
-                loginData: {
+                    loginData:{
                     username: "",
                     password: ""
                 }
@@ -35,7 +34,7 @@
         methods: {
             setData: function () {
                 this.$store.dispatch('SET_LOGIN_USER_REQUEST', this.loginData)
-                    .then(()=>{this.$router.push('page/companies')})
+                    this.$router.push('page/companies')
             }
         }
     }

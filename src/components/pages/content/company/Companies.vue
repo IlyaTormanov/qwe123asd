@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="company_list" >
-                <Company :data="company" v-for="company in this.allCompany"/>
+                <Company :data="company" v-for="company in filterCompany.length>0?this.filterCompany:this.allCompany"/>
             </div>
         </div>
 
@@ -42,6 +42,9 @@
         computed: {
             allCompany: function () {
                 return this.$store.getters.GET_ALL_COMPANY
+            },
+            filterCompany:function(){
+              return this.$store.getters.GET_COMPANY_FILTER
             },
             setSidebar: function () {
                 return this.$store.getters.GET_FILTER_SIDEBAR
