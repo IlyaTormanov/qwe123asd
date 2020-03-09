@@ -12,12 +12,14 @@ const entityEq = fromEquals((a, b) => a.name === b.name);
 
 export const store = new Vuex.Store({
     state: {
+
         filterSidebar: true,
         modal: {},
         loginUser: {
             username: "",
             password: ""
         },
+        cityList:[],
         companyFilter: [],
         signUp: {
             username: "",
@@ -32,6 +34,9 @@ export const store = new Vuex.Store({
     getters: {
         GET_COMPANY_FILTER: (state) => {
             return state.companyFilter
+        },
+        GET_CITY_LIST:(state)=>{
+          return state.cityList
         },
         GET_COMPANY: (state) => {
             return state.company
@@ -53,6 +58,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        SET_CITY_LIST:(state)=>{
+          state.company_all.map(i=>state.cityList.push(i.city))
+        },
         SET_COMPANY_FILTER: (state, payload) => {
             if (!payload.length) {
                 state.companyFilter = []
