@@ -1,11 +1,10 @@
 import VueRouter from "vue-router";
-import App from "../../App";
 import Companies from "../../components/pages/content/company/Companies";
 import Login from "../../components/Authorization /login/Login";
-import Sign from "../../components/pages/content/utilsLayouts/rootes/Sign";
 import Registration from "../../components/Authorization /registration/Registration";
 import Content from "../../components/pages/content/utilsLayouts/rootes/Content";
 import Root from "../../components/pages/content/utilsLayouts/rootes/Root";
+import Company from "../../components/pages/content/company/Company";
 
 export const router=new VueRouter({
         mode:"history",
@@ -33,10 +32,16 @@ export const router=new VueRouter({
                             {
                                 path:'companies',
                                 name:'Companies',
-                                component:Companies
+                                component:Companies,
                             },
+                            {
+                                path:':id',
+                                name:'company',
+                                component:Company
+                            }
                         ]
-                    }
+                    },
+
 
                 ]
             },

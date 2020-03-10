@@ -35,13 +35,17 @@
               tech:[]
           }
         },
-        // mounted() {
-        //     this.$store.dispatch('SET_TECHNOLOGIES')
-        // },
+        created() {
+            const userData=JSON.parse(sessionStorage.getItem('user'))
+            if(userData){
+                this.$store.commit('SET_LOGIN_USER_SUCCESS',userData)
+            }
+        },
         computed:{
           setModal:function(){
               return this.$store.getters.GET_MODAL
           }
+
         },
         methods: {
             checkModal: function (arg) {

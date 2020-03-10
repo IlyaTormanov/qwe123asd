@@ -20,7 +20,7 @@ export const store = new Vuex.Store({
             password: ""
         },
         cityList:[],
-        companyFilter: [],
+        companyFilter: "",
         signUp: {
             username: "",
             password: "",
@@ -32,6 +32,7 @@ export const store = new Vuex.Store({
         technologies: []
     },
     getters: {
+
         GET_COMPANY_FILTER: (state) => {
             return state.companyFilter
         },
@@ -48,7 +49,7 @@ export const store = new Vuex.Store({
             return state.technologies
         },
         GET_ALL_COMPANY: (state) => {
-            return state.company_all
+            return state.company_all.filter(item => (item.name || '').toLowerCase().includes(state.companyFilter.toLowerCase()))
         },
         GET_LOGIN_USER: (state) => {
             return state.loginUser
@@ -62,18 +63,7 @@ export const store = new Vuex.Store({
           state.company_all.map(i=>state.cityList.push(i.city))
         },
         SET_COMPANY_FILTER: (state, payload) => {
-            if (!payload.length) {
-                state.companyFilter = []
-                return false
-            }
-            state.company_all.filter(i => {
-                if (i.name !== null && i.name.toLowerCase().includes(payload.toLowerCase())) {
-                    state.companyFilter = uniq(entityEq)([...state.companyFilter, i])
-
-                }
-
-            })
-
+            state.companyFilter = payload
         },
         SET_COMPANY_REQUEST: (state, payload) => {
             state.company = payload
@@ -114,7 +104,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         SET_COMPANY_REQUEST: (context, payload) => {
-            return Vue.axios.post(`${routes.COMPANY}?${stringify(payload)}`, {'authorization': `Bearer ${this.state.loginUser.token}`})
+            return Vue.axios.get(`${routes.COMPANY}?${stringify({id:payload})}`,  { headers: {'authorization': `Bearer ${store.state.loginUser.token}`}})
                 .then(res => {
                     context.commit('SET_COMPANY_SUCCESS', res.data)
                 })
@@ -140,14 +130,12 @@ export const store = new Vuex.Store({
         SET_LOGIN_USER_REQUEST: (context, payload) => {
             return Vue.axios.post(`${routes.SIGN_IN}?${stringify(payload)}`)
                 .then(res => {
-
                     if (res.status === 200) {
                         context.commit('SET_LOGIN_USER_SUCCESS', res.data)
                         sessionStorage.setItem('user', JSON.stringify(res.data))
                     }
-
                 }).catch(e => {
-                        console.log(JSON.stringify(e));
+
                         context.commit('SET_MODAL', {status: 400, text: 'Неверный логин или пароль'})
                     }
                 )

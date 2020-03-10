@@ -20,9 +20,25 @@
                     <MultiSelect :model="technologies"/>
 
                 </div>
+                <div class="filter_dropdown_item">
+                    <label>Тип занятости</label>
+                    <MultiSelect :model="technologies"/>
+
+                </div>
+                <div class="filter_dropdown_item">
+                    <label>Зарплата</label>
+                    <MultiSelect :model="technologies"/>
+
+                </div>
+                <div class="filter_dropdown_item">
+                    <Button>Применить</Button>
+                </div>
             </div>
             <div class="company_list" >
-                <Company :data="company" v-for="company in filterCompany.length>0?this.filterCompany:this.allCompany"/>
+                <router-link v-for="company in this.allCompany" :to="{name:'company',params:{id:company.id}}" :key="company.id" >
+                    <CompanyLine :data="company"  />
+                </router-link>
+
             </div>
         </div>
 
@@ -30,21 +46,19 @@
 </template>
 
 <script>
-    import Company from "./Company";
+    import CompanyLine from "./CompanyLine";
     import ContentHeader from "../utilsLayouts/contentHeader/ContentHeader";
     import Input from "../../../UtilsComponents/input/input";
     import MultiSelect from "../../../UtilsComponents/select/MultiSelect";
+    import Button from "../../../UtilsComponents/button/Button";
 
     export default {
         name: "Companies",
-        components: {MultiSelect, Input, ContentHeader, Company},
+        components: {Button, CompanyLine, MultiSelect, Input, ContentHeader},
 
         computed: {
             allCompany: function () {
                 return this.$store.getters.GET_ALL_COMPANY
-            },
-            filterCompany:function(){
-              return this.$store.getters.GET_COMPANY_FILTER
             },
             setSidebar: function () {
                 return this.$store.getters.GET_FILTER_SIDEBAR
@@ -69,17 +83,17 @@
             .content{
                  display:grid;
                 width:100%;
+                height:700px;
                 box-sizing: border-box;
-                height:min-content;
                 background:#edeef0;
-                grid-template-columns: auto auto;
+                grid-template-columns: 30% 70%;
                 grid-row-gap: 5px;
                 .filter_dropdown {
                     @media screen and(max-width:1366px){
                             width:300px;
                     }
-                    display: grid;
-                    grid-row-gap: 20px;
+                    display: flex;
+                    flex-direction: column;
                     -webkit-box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
                     -moz-box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
                     box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
@@ -93,6 +107,7 @@
                     border-radius: 4px;
 
                     .filter_dropdown_item {
+                        padding-top: 30px;
                         width: 100%;
                         display: flex;
                         flex-direction: column;
@@ -100,21 +115,16 @@
 
                     }
                 }
-
                 .company_list {
                     height:100%;
                     overflow:auto;
                     box-sizing: border-box;
                     background: white;
-                    padding-top:10px;
-                    width:max-content;
-                    align-items: flex-start;
-                    justify-content: flex-start;
-                    align-content: flex-start;
-                    display: flex;
+                    width:100%;
+                    align-items: stretch;
+                    display: grid;
+                    grid-row-gap: 10px;
                     flex-direction: column;
-
-
                 }
             }
 

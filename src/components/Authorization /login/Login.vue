@@ -1,7 +1,7 @@
 <template>
     <Classic>
         <div class="header">
-            <Avatar/>
+            <Avatar :mini="true"/>
             <div class="login_title">Войти</div>
         </div>
         <form class="form">

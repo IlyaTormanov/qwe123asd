@@ -1,14 +1,29 @@
 <template>
-    <div>
-        <div class="company_promo" >
-            <Avatar/>
-            <div class="description">
-                <div class="company_name">{{data.name}}</div>
-                <div class="company_description">{{data.description}}</div>
+
+    <div class="company">
+        <div class="content">
+            <div class="description_panel">
+                <div class="company_name">{{company.name}}</div>
+                <div class="company_description">{{company.description}}</div>
             </div>
-            <div class="company_contacts">
-                <div>{{data.email}}</div>
-                <div>{{data.phone}}</div>
+            <Avatar :mini="false"/>
+        </div>
+        <div class="contacts_block">
+            <div class="item">
+                <span class="item_key">Веб-сайт</span>
+                <span class="item_value">{{company.webSite}}</span>
+            </div>
+            <div class="item">
+                <span class="item_key">Электронная почта</span>
+                <span class="item_value">{{company.email}}</span>
+            </div>
+            <div class="item">
+                <span class="item_key">Город</span>
+                <span class="item_value">{{company.city}}</span>
+            </div>
+            <div class="item">
+                <span class="item_key">Телефонный номер</span>
+                <span class="item_value">{{company.phone}}</span>
             </div>
         </div>
     </div>
@@ -16,47 +31,94 @@
 
 <script>
     import Avatar from "../../../UtilsComponents/images/Avatar";
+
     export default {
         name: "Company",
         components: {Avatar},
-        props:{
-            data:Object
+        created() {
+            this.$store.dispatch('SET_COMPANY_REQUEST', this.$route.params.id)
+        },
+        computed: {
+            company: function () {
+                return this.$store.getters.GET_COMPANY
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
     @import "src/variables";
-        .company_promo{
-            -webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-            -moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-            box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-            background:white;
-            display:grid;
-            grid-template-columns: 13% 67% 20%;
-            align-items: center;
-            padding:25px 15px;
+
+    .company {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        background: white;
+        width: 70%;
+        height: 100%;
+
+        .content {
+            display: flex;
+            padding: 15px;
             box-sizing: border-box;
-            height:90px;
-            border: 1px solid $border;
-            border-radius: 4px;
-            width:700px;
-            .description{
-                align-items: baseline;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+
+            .description_panel {
+                padding-left: 50px;
+
+                box-sizing: border-box;
+                order: 2;
+
+                .company_name {
+                    font-size: 2em;
+                }
+
+                .company_description {
+                    text-align: start;
+                    word-break: break-all;
+                    padding-top: 20px;
+                    font-size: 1.3em;
+                    overflow-wrap: break-word;
+                    letter-spacing: 1.2px;
+                }
+            }
+
+
+        }
+        .contacts_block {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            .item{
+                margin-top: 30px;
+                width:600px;
                 display: flex;
                 flex-direction: column;
 
-                .company_name{
-                    font-size:1.2em;
-                    font-weight: bolder;
-                    color:$gray;
-                }
-                .company_description{
-                    color:#2a5885;
-                    font-size:0.9em;
-                    letter-spacing: 1.1px;
-                }
+                box-sizing: border-box;
+                .item_key{
+                    text-align: start;
+                    font-size: 1.3em;
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid $border;
 
+
+                }
+                .item_value{
+                    margin-top: 10px;
+                    width: max-content;
+                    font-size: 1.1em;
+                    padding:5px 10px;
+                    cursor: pointer;
+                    border: 1px solid $border;
+                    border-radius: 6px;
+
+                }
             }
         }
+
+    }
 </style>
