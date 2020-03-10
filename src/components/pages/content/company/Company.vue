@@ -30,11 +30,12 @@
 </template>
 
 <script>
+    import Web from 'vue-material-design-icons/Web.vue';
     import Avatar from "../../../UtilsComponents/images/Avatar";
 
     export default {
         name: "Company",
-        components: {Avatar},
+        components: {Avatar,Web},
         created() {
             this.$store.dispatch('SET_COMPANY_REQUEST', this.$route.params.id)
         },
