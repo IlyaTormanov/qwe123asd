@@ -6,7 +6,6 @@
                 <router-link v-for="company in this.allCompany" :to="{name:'company',params:{id:company.id}}" :key="company.id" >
                     <CompanyLine :data="company"  />
                 </router-link>
-
             </div>
         </div>
 
