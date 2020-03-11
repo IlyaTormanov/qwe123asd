@@ -5,6 +5,7 @@ import Registration from "../../components/Authorization /registration/Registrat
 import Content from "../../components/pages/content/utilsLayouts/rootes/Content";
 import Root from "../../components/pages/content/utilsLayouts/rootes/Root";
 import Company from "../../components/pages/content/company/Company";
+import Vacansies from "../../components/pages/content/vacansy/Resumes";
 
 export const router=new VueRouter({
         mode:"history",
@@ -38,6 +39,11 @@ export const router=new VueRouter({
                                 path:':id',
                                 name:'company',
                                 component:Company
+                            },
+                            {
+                                path:'vacansies',
+                                name:'Vacansies',
+                                component:Vacansies
                             }
                         ]
                     },

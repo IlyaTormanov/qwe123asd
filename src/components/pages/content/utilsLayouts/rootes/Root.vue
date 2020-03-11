@@ -1,10 +1,16 @@
 <template>
+    <div>
+
     <router-view></router-view>
+
+    </div>
 </template>
 
 <script>
+
     export default {
-        name: "Root"
+        name: "Root",
+
     }
 </script>
 

@@ -12,7 +12,13 @@ const entityEq = fromEquals((a, b) => a.name === b.name);
 
 export const store = new Vuex.Store({
     state: {
-
+        resumeList:{
+            pageresponse:{
+                currentPage:1,
+                pageSize:1,
+                totalPages:0
+            }
+        },
         filterSidebar: true,
         modal: {},
         loginUser: {
@@ -32,7 +38,9 @@ export const store = new Vuex.Store({
         technologies: []
     },
     getters: {
-
+        GET_RESUME_LIST:(state)=>{
+            return state.resumeList
+        },
         GET_COMPANY_FILTER: (state) => {
             return state.companyFilter
         },
@@ -59,6 +67,12 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        SET_RESUME_LIST_REQUEST:(state,payload)=>{
+            state.resumeList=payload
+        },
+        SET_RESUME_LIST_SUCCESS:(state,payload)=>{
+          state.resumeList=payload
+        },
         SET_CITY_LIST:(state)=>{
           state.company_all.map(i=>state.cityList.push(i.city))
         },
@@ -103,6 +117,12 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
+        SET_RESUME_LIST_REQUEST:(context,payload)=>{
+          return Vue.axios.get(`${routes.RESUME_LIST}?${stringify(payload)}`)
+              .then(res=>{
+                  context.commit('SET_RESUME_LIST_SUCCESS',res.data)
+              })
+        },
         SET_COMPANY_REQUEST: (context, payload) => {
             return Vue.axios.get(`${routes.COMPANY}?${stringify({id:payload})}`,  { headers: {'authorization': `Bearer ${store.state.loginUser.token}`}})
                 .then(res => {

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="company">
+    <div class="company" :key="company.id">
         <div class="content">
             <div class="description_panel">
                 <div class="description_panel_block">
@@ -178,6 +178,7 @@
                 box-sizing: border-box;
 
                 .item_key {
+                    cursor: pointer;
                     text-align: start;
                     font-size: 1.3em;
                     padding-bottom: 5px;

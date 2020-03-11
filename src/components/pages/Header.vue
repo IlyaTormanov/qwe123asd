@@ -1,8 +1,8 @@
 <template>
     <div id="header">
         <div class="links">
-            <router-link to='/specialists' class="nav-link">Вакансии</router-link>
-            <router-link to='/specialists' class="nav-link">Резюме</router-link>
+            <router-link :to="{name:'Companies'}" class="nav-link">Компании</router-link>
+            <router-link :to="{name:'Vacansies'}" class="nav-link">Резюме</router-link>
             <router-link to='/specialists' class="nav-link">Компания</router-link>
             <router-link to='/specialists' class="nav-link">Профиль</router-link>
         </div>

@@ -3,7 +3,7 @@
             <Avatar :mini="true"/>
             <div class="description">
                 <div class="company_name">{{data.name}}</div>
-                <div class="company_description">{{data.description}}</div>
+                <div class="company_description">{{catDescr}}</div>
             </div>
             <div class="company_contacts">
                 <div>{{data.email}}</div>
@@ -11,7 +11,6 @@
             </div>
         </div>
 </template>
-
 <script>
     import Avatar from "../../../UtilsComponents/images/Avatar";
     export default {
@@ -20,6 +19,13 @@
         props:{
             data:Object,
 
+        },
+        computed:{
+            catDescr:function () {
+                if(this.data.description){
+                    return this.data.description.substring(0,70)
+                }
+            }
         }
     }
 </script>

@@ -35,7 +35,6 @@
             return {
                 showSearch: false,
                 currentValue: "",
-
             }
         },
         watch: {
@@ -44,8 +43,6 @@
                     this.$store.commit('SET_COMPANY_FILTER',val)
 
             }
-
-
         },
         methods: {
             updateSidebar: function () {
@@ -55,10 +52,7 @@
         computed: {
             sidebar: function () {
                 return this.$store.getters.GET_FILTER_SIDEBAR
-
             },
-
-
         },
         created() {
             this.$store.dispatch('SET_TECHNOLOGIES_REQUEST')
@@ -71,14 +65,16 @@
     @import "src/variables";
 
     #content_header {
+        margin-top:120px;
         left:400px !important;
         width:100%;
         display:flex;
+        background: white;
         flex-direction: row;
         justify-content: space-between;
         padding:15px 40px;
         height:90px;
-        border-bottom: 2px solid $blue;
+        border-bottom: 2px solid $bostil;
         align-items: center;
         box-sizing: border-box;
 

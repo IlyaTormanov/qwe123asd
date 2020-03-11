@@ -1,16 +1,17 @@
 <template>
 <div id="content">
     <Header/>
-
-    <router-view exact="companies"/>
+    <ContentHeader/>
+    <router-view />
 </div>
 </template>
 
 <script>
     import Header from "../../../Header";
+    import ContentHeader from "../contentHeader/ContentHeader";
     export default {
         name: "Content",
-        components: {Header}
+        components: {ContentHeader, Header}
     }
 </script>
 
