@@ -57,7 +57,7 @@
 
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
-
+    @import "variables";
     * {
         margin: 0;
         padding: 0;
@@ -82,6 +82,10 @@
             }
         .material-design-icon{
             cursor:pointer;
+            fill:$black;
+            :hover{
+                fill:$bostil;
+            }
         }
         input, textarea {
             box-sizing: border-box;
@@ -99,9 +103,7 @@
             width:100%;
         }
         button {
-            color: white;
             min-width: 60px;
-            border: none !important;
             cursor: pointer;
         }
 

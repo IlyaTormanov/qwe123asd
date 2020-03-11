@@ -30,10 +30,10 @@
         display:flex;
         justify-content: space-between;
         width: 100%;
-        background: white;
-        height: 60px;
+        background: $bostil;
+        height: 80px;
         .close-link{
-            color: $gray;
+            color: white;
             font-weight: bolder;
             font-size: 1.3em;
             padding: 0 20px;
@@ -44,14 +44,13 @@
        .links{
 
            display: flex;
-
            justify-content: center;
            align-items: center;
            padding: 15px 20%;
            box-sizing: border-box;
 
            .nav-link {
-               color: $gray;
+               color: white;
                font-weight: bolder;
                font-size: 1.3em;
                padding: 0 20px;
