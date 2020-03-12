@@ -12,9 +12,6 @@
         <div class="close-link">
             <div class="username">{{this.username}}</div>
             <img :src="avatar" class="miniavatar"/>
-
-
-<!--            Выйти <ExitToApp/>-->
         </div>
     </div>
 </template>
