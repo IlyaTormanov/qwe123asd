@@ -5,7 +5,7 @@
                class="selectInput fullWidthInput" v-model="typingValue"  @focus="showList=!showList"/>
         <div  class="tagList">
            <Tag
-             :tag="tag"
+             :tag="tag.name"
              v-for="tag in tagList"
              v-if="tagList.length">
             <CloseCircle :size="18" class="icon"  @click="removeFromTagList(tag)" title="Удалить"/>
@@ -42,6 +42,7 @@
                 showList:false
             }
         },
+            //TODO taglist
         watch:{
           showList:function(val){
               this.showList=val

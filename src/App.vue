@@ -6,15 +6,18 @@
 </template>
 
 <script>
-    import {checkIsEmpty} from '@/functions/utils';
+
     import HelloWorld from './components/HelloWorld.vue'
-    import Login from "@/components/Authorization /login/Login";
-    import PopUp from "@/components/UtilsComponents/modal/PopUp";
-    import Registration from "@/components/Authorization /registration/Registration";
+
+
     import Companies from "./components/pages/content/company/Companies";
     import Select from "./components/UtilsComponents/select/Select";
     import ContentHeader from "./components/pages/content/utilsLayouts/contentHeader/ContentHeader";
     import Header from "./components/pages/Header";
+    import Registration from "./components/authoruzation/registration/Registration";
+    import PopUp from "./components/UtilsComponents/modal/PopUp";
+    import Login from "./components/authoruzation/login/Login";
+    import {checkIsEmpty} from "./functions/utils";
     export default {
         name: 'App',
         components: {
@@ -84,7 +87,7 @@
             cursor:pointer;
             fill:$black;
             :hover{
-                fill:$bostil;
+                fill:$blue;
             }
         }
         input, textarea {

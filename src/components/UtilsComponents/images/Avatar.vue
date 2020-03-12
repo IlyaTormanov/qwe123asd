@@ -15,6 +15,7 @@
     .logo{
         width:70px;
         height:70px;
+        border-radius: 50%;
     }
     .large{
         width:200px;

@@ -1,14 +1,19 @@
 <template>
     <EntityWrapper>
         <div class="entity" >
-            <Avatar :mini="true"/>
+
             <div class="description">
-                <div class="entity_name">{{data.name}}</div>
-                <div class="entity_description">{{catDescr}}</div>
+                <Avatar :mini="true"/>
+               <div class="description_col">
+                   <div class="entity_name">{{data.name}}</div>
+                   <div class="entity_description">{{catDescr}}</div>
+                   <div class="entity_description">
+                       {{data.webSite}}
+                   </div>
+               </div>
             </div>
-            <div class="entity_contacts">
-                <div>{{data.email}}</div>
-                <div>{{data.phone}}</div>
+            <div class="entity_tags">
+                <Tag :tag="item.name" v-for="item in tagList"/>
             </div>
         </div>
     </EntityWrapper>
@@ -16,9 +21,27 @@
 <script>
     import Avatar from "../../../UtilsComponents/images/Avatar";
     import EntityWrapper from "../../../Wrappers/EntityWrapper";
+    import Tag from "../../../UtilsComponents/Tag";
     export default {
         name: "CompanyLine",
-        components: {EntityWrapper, Avatar},
+        components: {Tag, EntityWrapper, Avatar},
+        data(){
+          return{
+              tagList:[
+                  {
+                      name:'IT'
+                  },
+                  {
+                      name:'Менеджмент'
+                  },
+                  {
+                      name:'Грузоперевозки'
+                  },
+
+
+              ]
+          }
+        },
         props:{
             data:Object,
 
@@ -37,30 +60,40 @@
     @import "src/variables";
         .entity{
             width:100%;
-            display:grid;
-            grid-template-columns: 13% 67% 20%;
+            display: flex;
             align-items: center;
-            padding:25px 30px;
+            justify-content: space-between;
+            padding:25px 0px;
+            border-bottom: 1px solid $border;
             box-sizing: border-box;
             .description{
-                align-items: baseline;
-                display: flex;
-                flex-direction: column;
 
-                .entity_name{
-                    font-size:1.4em;
-                    font-weight: bolder;
-                    color:$gray;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                text-align: start;
+                .description_col{
+                    padding-left: 10px;
+                    .entity_name{
+                        font-size:1em;
+                        font-weight: bolder;
+                        color:#2a5885;
+                    }
+                    .entity_description{
+
+                        font-size:0.9em;
+                        color:$gray;
+                    }
                 }
-                .entity_description{
-                    color:#2a5885;
-                    font-size:1em;
-                    letter-spacing: 1.1px;
-                }
+
 
             }
-            .entity_contacts{
-                color:#2a5885
+            .entity_tags{
+                display: flex;
+                flex-direction: row;
+                :nth-child(1n+2){
+                    margin-left: 5px;
+                }
             }
         }
 </style>

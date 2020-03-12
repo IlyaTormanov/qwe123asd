@@ -125,7 +125,7 @@
                             font-size: 2em;
                         }
                         .favourites{
-                            background: $bostil;
+                            background: $blue;
                             color:white;
                             border-radius: 4px;
                             padding:7px;

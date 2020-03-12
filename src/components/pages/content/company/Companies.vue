@@ -62,11 +62,9 @@
                     overflow:auto;
                     box-sizing: border-box;
                     background: white;
-                    width:100%;
-                    align-items: stretch;
-                    display: grid;
-                    grid-row-gap: 10px;
-                    flex-direction: column;
+                    width:95%;
+
+
                 }
             }
 

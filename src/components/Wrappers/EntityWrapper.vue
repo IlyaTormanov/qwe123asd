@@ -15,13 +15,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height:160px;
-        border: 1px solid $border;
-        border-radius: 4px;
+        height:110px;
+        padding:0 20px;
+        box-sizing: border-box;
         width:100%;
-        -webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-        -moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
-        box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);
+        /*-webkit-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);*/
+        /*-moz-box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);*/
+        /*box-shadow: 0px 1px 12px 1px rgba(189,189,189,1);*/
         background:white;
     }
 </style>

@@ -1,11 +1,13 @@
 import VueRouter from "vue-router";
 import Companies from "../../components/pages/content/company/Companies";
-import Login from "../../components/Authorization /login/Login";
-import Registration from "../../components/Authorization /registration/Registration";
+
+
 import Content from "../../components/pages/content/utilsLayouts/rootes/Content";
 import Root from "../../components/pages/content/utilsLayouts/rootes/Root";
 import Company from "../../components/pages/content/company/Company";
-import Vacansies from "../../components/pages/content/vacansy/Resumes";
+import Vacansies from "../../components/pages/content/resume/Resumes";
+import Login from "../../components/authoruzation/login/Login";
+import Registration from "../../components/authoruzation/registration/Registration";
 
 export const router=new VueRouter({
         mode:"history",

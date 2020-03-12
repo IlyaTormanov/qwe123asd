@@ -31,9 +31,9 @@
         }
         display: flex;
         flex-direction: column;
-        -webkit-box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
-        -moz-box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
-        box-shadow: 0px 1px 12px 1px rgba(189, 189, 189, 1);
+        -webkit-box-shadow: 1px 8px 12px 0px rgba(156,156,156,1);
+        -moz-box-shadow: 1px 8px 12px 0px rgba(156,156,156,1);
+        box-shadow: 1px 8px 12px 0px rgba(156,156,156,1);
         /*height:600px;*/
 
         width: 500px;

@@ -10,9 +10,8 @@
             </div>
         </div>
         <Input v-if="showSearch"
-               :style="{background:'#e7e8ec'}"
                :large="true" placeholder="Поиск..."
-               v-model="currentValue" />
+               :model="currentValue" :right-item="true">Найти</Input>
         <MagnifyIcon fill-color="#787878" :size="28" @click="showSearch=!showSearch"/>
     </div>
 </template>
@@ -74,7 +73,7 @@
         justify-content: space-between;
         padding:15px 40px;
         height:90px;
-        border-bottom: 2px solid $bostil;
+        border-bottom: 2px solid $border;
         align-items: center;
         box-sizing: border-box;
 

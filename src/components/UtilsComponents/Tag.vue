@@ -1,6 +1,6 @@
 <template>
     <div class="tag">
-                <div>{{tag.name}}</div>
+                <div>{{tag}}</div>
                 <slot></slot>
     </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
     export default {
         name: "Tag",
-        props:{tag:Object}
+        props:{tag:String}
     }
 </script>
 
