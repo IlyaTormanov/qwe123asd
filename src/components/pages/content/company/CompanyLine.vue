@@ -1,7 +1,6 @@
 <template>
     <EntityWrapper>
         <div class="entity" >
-
             <div class="description">
                 <Avatar :mini="true"/>
                <div class="description_col">

@@ -1,10 +1,10 @@
 <template>
-    <div class="wrapper">
-        <input :class="large?'large':'input'" @input="onChange"
+    <div class="wrapper_input">
+        <input :class="className" @input="onChange"
                @focus="onFocus"
                :placeholder="placeholder"
                :name="name"
-               v-model="model"
+
         />
         <div class="side_item" v-if="rightItem">
             <slot></slot>
@@ -21,11 +21,11 @@
             MenuIcon
         },
         props: {
+            className:String,
             name: String,
             rightItem: Boolean,
             placeholder: String,
-            model:String,
-            large: Boolean,
+
             isSelect: Boolean,
 
 
@@ -46,11 +46,26 @@
 
 <style scoped lang="scss">
     @import "src/variables.scss";
-
-    .wrapper {
-        min-width: 40%;
+    .wrapper_large{
+        width:40%;
+    }
+    .wrapper_input {
+       width:inherit;
         display: flex;
         flex-direction: row;
+
+        .classic{
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: stretch;
+            line-height: 1.42857143;
+            height: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            background: var(--background, white);
+            color: var(--color, black);
+            width:100%;
+        }
         .input {
             border: none !important;
             padding: 10px;

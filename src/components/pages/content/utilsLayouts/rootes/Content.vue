@@ -1,5 +1,6 @@
 <template>
 <div id="content">
+        <FeedbackForm v-if="getFeedbackState"/>
     <Header/>
     <ContentHeader/>
     <router-view />
@@ -9,14 +10,22 @@
 <script>
     import Header from "../../../Header";
     import ContentHeader from "../contentHeader/ContentHeader";
+    import FeedbackForm from "../../../../UtilsComponents/feedbackForm/FeedbackForm";
     export default {
         name: "Content",
-        components: {ContentHeader, Header}
+        components: {FeedbackForm, ContentHeader, Header},
+        computed:{
+            getFeedbackState:function(){
+                return this.$store.getters.GET_FEEDBACK_PANEL
+            }
+        },
+
     }
 </script>
 
 <style scoped>
         #content{
+        position: relative;
             width:100%;
             display:flex;
             justify-content: center;

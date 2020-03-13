@@ -61,8 +61,8 @@
                     height:100%;
                     overflow:auto;
                     box-sizing: border-box;
-                    background: white;
-                    width:95%;
+                    background: #edeef0;
+                    width:100%;
 
 
                 }

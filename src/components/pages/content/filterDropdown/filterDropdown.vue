@@ -25,7 +25,7 @@
 
 <style scoped lang="scss">
     .filter_dropdown {
-        height:687px;
+        height:100%;
         @media screen and(max-width:1366px){
             width:300px;
         }

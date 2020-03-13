@@ -1,14 +1,17 @@
 <template>
     <div class="resumes">
+        <FilterDropdown/>
         <div class="resumes_content">
-            <FilterDropdown/>
+
             <div class="resumes_list">
                             <Resume :resume="resume" v-for="resume in this.resumeList.result"/>
             </div>
 
+                <Paginate :page-count="this.resumeList.pageresponse.pageSize" v-model="currentPage" :click-handler="setPage"  container-class="pagination"
+                          page-class="page-item"/>
+
         </div>
-        <Paginate :page-count="this.resumeList.pageresponse.pageSize" v-model="currentPage" :click-handler="setPage"  container-class="pagination"
-                  page-class="page-item"/>
+
     </div>
 </template>
 
@@ -53,13 +56,18 @@
     @import "src/variables";
         .resumes{
             width:100%;
-            background:white;
+            background:#edeef0;
+            display:flex;
+
                 .resumes_content{
+                    margin-left:72px;
                     width:100%;
                     display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
+                    background: white;
+                    flex-direction: column;
+                    overflow: auto;
                         .resumes_list{
+
                             margin-left:15px;
                             width:100%;
                         }

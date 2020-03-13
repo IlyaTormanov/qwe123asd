@@ -1,7 +1,7 @@
 <template>
     <div class="item_relative_wrapper">
         <Input placeholder="Технологии"
-               :large="false"
+               class-name="input"
                class="selectInput fullWidthInput" v-model="typingValue"  @focus="showList=!showList"/>
         <div  class="tagList">
            <Tag

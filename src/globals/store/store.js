@@ -12,6 +12,7 @@ const entityEq = fromEquals((a, b) => a.name === b.name);
 
 export const store = new Vuex.Store({
     state: {
+        feedbackPanel:false,
         resumeList:{
             pageresponse:{
                 currentPage:1,
@@ -38,6 +39,9 @@ export const store = new Vuex.Store({
         technologies: []
     },
     getters: {
+        GET_FEEDBACK_PANEL:(state)=>{
+          return state.feedbackPanel
+        },
         GET_RESUME_LIST:(state)=>{
             return state.resumeList
         },
@@ -67,6 +71,9 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
+        SET_FEEDBACK_PANEL:(state,payload)=>{
+          state.feedbackPanel=payload
+        },
         SET_RESUME_LIST_REQUEST:(state,payload)=>{
             state.resumeList=payload
         },

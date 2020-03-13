@@ -5,8 +5,8 @@
             <div class="login_title">Войти</div>
         </div>
         <form class="form">
-            <Input placeholder="Логин" v-model="loginData.username"/>
-            <Input placeholder="Пароль" v-model="loginData.password"/>
+            <Input placeholder="Логин" v-model="loginData.username" :large="false"/>
+            <Input placeholder="Пароль" v-model="loginData.password" :large="false"/>
 
         </form>
         <Button @click="setData">
