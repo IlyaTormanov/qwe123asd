@@ -39,7 +39,8 @@
             return {
                 typingValue: "",
                 tagList:[],
-                showList:false
+                showList:false,
+                ]
             }
         },
             //TODO taglist
