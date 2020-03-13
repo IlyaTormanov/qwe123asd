@@ -8,7 +8,6 @@
                 <Paginate :page-count="this.resumeList.pageresponse.pageSize" v-model="currentPage" :click-handler="setPage"  container-class="pagination"
                           page-class="page-item"/>
         </div>
-
     </div>
 </template>
 
@@ -23,7 +22,7 @@
         components:{FilterDropdown, Resume, Paginate,ChevronLeft,ChevronRight},
         data(){
           return{
-              currentPage:1
+              currentPage:1,
           }
         },
         methods:{
