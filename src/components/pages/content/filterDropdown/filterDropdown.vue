@@ -6,7 +6,7 @@
             <label>Технологии</label>
             <MultiSelect :model="this.data"/>
         </div>
-
+        <Button class-name="border_thin">Сохранить фильтры</Button>
     </div>
     </div>
 </template>

@@ -10,7 +10,8 @@
             </div>
         </div>
         <Input v-if="showSearch"
-               class-name="large" placeholder="Поиск..."
+               margin="0 0 0 30%"
+               class-name="large wrapper_large" placeholder="Поиск..."
                :model="currentValue" :right-item="true">Найти</Input>
         <MagnifyIcon fill-color="#787878" :size="28" @click="showSearch=!showSearch"/>
     </div>

@@ -1,10 +1,9 @@
 <template>
-    <div class="wrapper_input">
+    <div class="wrapper_input" :style="{margin:margin}">
         <input :class="className" @input="onChange"
                @focus="onFocus"
                :placeholder="placeholder"
                :name="name"
-
         />
         <div class="side_item" v-if="rightItem">
             <slot></slot>
@@ -25,7 +24,7 @@
             name: String,
             rightItem: Boolean,
             placeholder: String,
-
+            margin:String,
             isSelect: Boolean,
 
 
@@ -43,11 +42,10 @@
 
     }
 </script>
-
 <style scoped lang="scss">
     @import "src/variables.scss";
     .wrapper_large{
-        width:40%;
+        width:40% !important;
     }
     .wrapper_input {
        width:inherit;
@@ -78,7 +76,7 @@
             border-radius: 4px;
             box-sizing: border-box;
             width: 100%;
-            height: 60px;
+            height: 50px;
             color: $gray;
             background: #e7e8ec;
 

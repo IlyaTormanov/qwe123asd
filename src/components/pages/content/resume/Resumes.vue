@@ -1,15 +1,12 @@
 <template>
     <div class="resumes">
-        <FilterDropdown/>
+        <FilterDropdown :data="technologies"/>
         <div class="resumes_content">
-
             <div class="resumes_list">
                             <Resume :resume="resume" v-for="resume in this.resumeList.result"/>
             </div>
-
                 <Paginate :page-count="this.resumeList.pageresponse.pageSize" v-model="currentPage" :click-handler="setPage"  container-class="pagination"
                           page-class="page-item"/>
-
         </div>
 
     </div>
@@ -41,9 +38,10 @@
               immediate: true,
           }
         },
-
         computed:{
-
+            technologies:function(){
+             return this.$store.getters.GET_TECHNOLOGIES
+            },
              resumeList:function(){
                 return this.$store.getters.GET_RESUME_LIST
              }
