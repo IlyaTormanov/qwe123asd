@@ -14,7 +14,7 @@
     "fp-ts": "^2.5.3",
     "node-sass": "^4.13.1",
     "qs": "^6.9.1",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^13.2.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-material-design-icons": "^4.4.0",
@@ -24,8 +24,8 @@
     "yarn": "^1.22.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
     "babel-eslint": "^10.0.3",
     "vue-template-compiler": "^2.6.11"
   },
